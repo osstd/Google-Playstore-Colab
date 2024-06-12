@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="static/icon.png" type="image/x-icon" />
+    <title>PlayStore - The Numbers</title>
+
+    <link rel="stylesheet" href="static/css/require.css" />
+
+    <!-- Include Plotly JS library -->
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="main-heading">
+        <h1>Google Play Store Apps</h1>
+      </div>
+
+      <div class="text-container">
+        <h2>Introduction</h2>
+        <p>
+          App and review data was scraped from the Google Play Store by Lavanya
+          Gupta in 2018. Original files listed
+          <a href="https://www.kaggle.com/lava18/google-play-store-apps">here</a
+          >.
+        </p>
+      </div>
+
+      <div class="text-container">
+        <h2>Data Manipulation</h2>
+        <p>
+          To begin, we will read in the dataset from a .csv file into a Pandas
+          dataframe. We will then inspect the first and last few rows of the
+          data to get a sense of its structure and content. Next, we will
+          examine the dimensions of the dataframe, including the number of rows
+          and columns, and count the number of entries in each column. We will
+          also remove any duplicates or unused columns.
+        </p>
+
+        <ul>
+          <li>Read in the dataset from a .csv file</li>
+          <li>Inspect the first and last few rows of the data</li>
+          <li>Examine the dimensions of the dataframe</li>
+          <li>Count the number of entries in each column</li>
+          <li>Remove any NaN values present</li>
+          <li>
+            Check and eliminate any duplicate rows using
+            <code>.duplicated()</code> and <code>.drop_duplicates()</code>
+          </li>
+          <li>
+            Remove the columns called Last_Updated and Andriod_Version from the
+            DataFrame
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-container">
+        <h2>Plotly Pie and Donut Charts</h2>
+        <p>
+          Display the different content ratings categories using a plotly pie
+          chart.
+        </p>
+        <p>
+          Select a Donut or a Pie<br />For a pie, just click Pie. For a donut
+          input the size of the hole, size &in; [0,1] and click Donut.
+        </p>
+      </div>
+
+      <!-- Display the Plotly chart -->
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart1"></div>
+          <span class="label">Figure 1</span>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div id="input-div">
+          <input
+            type="number"
+            id="donut"
+            value="0"
+            min="0"
+            max="1"
+            step="0.01"
+          />
+          <button id="processpie">Pie</button>
+          <button id="processdonut">Donut</button>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Plotly Bar Charts: App Categories</h2>
+        <p>
+          To generate a list of the top 10 most common app categories in the
+          dataset. The <code>.value_counts()</code> function counts the number
+          of occurrences of each unique value in the 'Category' column, and the
+          <code>[:10] </code> slicing operation selects only the top 10 most
+          frequent categories. The result is stored, providing a list of the 10
+          most popular app categories in the dataset. The results is shown using
+          a vertical bar plot on the following figure.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart2"></div>
+          <span class="label">Figure 2</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Plotly Horizontal Bar Charts: Category Popularity</h2>
+        <p>
+          To calculate the total number of app installs (downloads) for each
+          category in a dataset and sort them in ascending order. The data is
+          first grouped by the 'Category' column using <code>.groupby()</code>,
+          then the sum of the 'Installs' column is calculated for each group
+          using the <code>.agg()</code> function. The resulting data is then
+          sorted in ascending order based on the number of installs, with the
+          category with the fewest downloads appearing first. The following
+          figure shows the final horizontal plot for each category.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart3"></div>
+          <span class="label">Figure 3</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Plotly Scatter: Downloads vs. Competition</h2>
+        <p>
+          This scatter creates a visual representation of app categories,
+          displaying the total number of apps and installs for each category.
+          The scatter plot shows:
+        </p>
+        <ul>
+          <li>Total apps on the x-axis</li>
+          <li>Total installs on the y-axis</li>
+          <li>
+            Bubble size indicating the number of apps in the category (larger =
+            more apps)
+          </li>
+          <li>
+            Bubble color indicating the total downloads (lighter = more
+            installs)
+          </li>
+        </ul>
+        <p>
+          Each category is represented by a bubble, providing a visual
+          comparison of app quantity and install volume across categories.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart4"></div>
+          <span class="label">Figure 4</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Colour Scales in Plotly Charts - Competition in Genres</h2>
+        <p>
+          Vertical bar chart using the series containing the genre data using a
+          color scale with the darker color represting a higher number of apps.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart5"></div>
+          <span class="label">Figure 5</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Grouped Bar Charts: Free vs. Paid Apps per Category</h2>
+        <p>
+          This grouped vertical bar chart displays the number of apps in each
+          category, comparing free and paid apps. The blue bars represent free
+          apps, while the red bars represent paid apps. The chart reveals that
+          in every category, there are significantly more free apps downloaded
+          than paid apps, indicating a strong preference for free apps across
+          all categories.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart6"></div>
+          <span class="label">Figure 6</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Plotly Box Plots: Lost Downloads for Paid Apps</h2>
+        <p>
+          Utilzing Plotly's box plot function to visualize the number of
+          installs for free and paid apps. The resulting plot reveals a striking
+          difference in the median number of installs between the two
+          categories, with free apps having a median of 500,000 installs and
+          paid apps having a median of just 5,000 installs. This disparity
+          suggests a significant loss of potential for paid apps, highlighting a
+          potential opportunity for growth and optimization in the paid app
+          market.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart7"></div>
+          <span class="label">Figure 7</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>Revenue by App Category</h2>
+        <p>
+          The following figure displays box plots of paid apps in each category,
+          showing the distribution of revenue for apps in that category. The
+          median revenue for apps in each category is highlighted, revealing
+          insights into the earning potential of apps in different categories.
+          For example, the median app in the Tools category earns approximately
+          $6,000. Notably, Photography apps earn around $57,000 on average,
+          which exceeds the assumed development cost of $30,000, indicating that
+          these apps are likely to recoup their development costs and
+          potentially generate profits.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart8"></div>
+          <span class="label">Figure 8</span>
+        </div>
+      </div>
+
+      <div class="text-container">
+        <h2>How Much Can You Charge? Paid App Pricing by Category</h2>
+        <p>
+          This final plot compares the actual prices of paid apps across
+          categories, revealing insights into pricing strategies. The median
+          price of all paid apps is $2.99, but notable variations exist across
+          categories. Business, Dating, and Medical apps have higher median
+          prices, while Personalization, Video Players, and News & Magazines
+          apps have lower median prices, indicating different monetization
+          approaches across categories.
+        </p>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart" id="chart9"></div>
+          <span class="label">Figure 9</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="static/js/require.js"></script>
+  </body>
+</html>

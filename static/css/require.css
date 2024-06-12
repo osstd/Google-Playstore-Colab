@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
+  color: rgb(43, 64, 94);
+}
+
+.main-heading {
+  margin-bottom: 4% 0%;
+}
+
+.main-container {
+  margin: 5%;
+  padding: 3%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: rgb(171, 178, 250);
+  border-radius: 5px;
+
+  h1 {
+    font-size: 2.25rem;
+    margin-right: 10px;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  span,
+  sub,
+  sup {
+    font-size: 1rem;
+  }
+}
+
+.text-container {
+  margin: 2%;
+  max-width: 98%;
+  padding: 20px 10px;
+  background-color: rgb(250, 250, 250);
+  border-style: solid;
+  border-width: 0.15rem;
+  border-color: rgb(171, 178, 250);
+  border-radius: 5px;
+  height: auto;
+  p,
+  ul {
+    margin: 1% 0%;
+    padding: 1% 2%;
+    font-size: 1.35rem;
+    text-align: justify;
+  }
+  code {
+    font-size: 1.15rem;
+    background-color: rgb(211, 215, 249);
+    padding: 0.5px;
+    border-radius: 4px;
+  }
+  ul {
+    li {
+      padding: 0% 2%;
+      list-style: inside;
+      font-size: 1.15rem;
+    }
+  }
+  a {
+    text-decoration: none;
+    font-size: 1.35rem;
+  }
+}
+
+.chart-container {
+  height: auto;
+  margin: 2%;
+  border-color: rgb(171, 178, 250);
+  border-width: 0.075rem;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.chart-grid {
+  max-width: 95%;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.chart-grid .label {
+  grid-row: 2;
+  text-align: center;
+}
+
+#input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  label,
+  input,
+  button {
+    margin: 5px 0px;
+  }
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  button {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+  }
+  button#processpie {
+    background-color: rgb(38, 120, 178);
+  }
+  button#processdonut {
+    background-color: rgb(212, 42, 47);
+  }
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #666;
+  sub,
+  sup {
+    color: #666;
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
