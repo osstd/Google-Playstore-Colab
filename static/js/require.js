@@ -7,8 +7,6 @@ async function fetchCSVData(url) {
 async function scatterBubbleChart(data, title, num) {
   const pdf = Plotly.d3.csv.parse(data);
 
-  // Map data for the trace
-
   const yData = pdf.map((row) => parseInt(row.Installs));
 
   const appSize = pdf.map((row) => parseInt(row.App));
@@ -657,9 +655,6 @@ async function main() {
     ]);
   } catch (error) {
     console.error("Error loading or plotting data:", error);
-  } finally {
-    const endTime = performance.now();
-    console.log(`Execution time: ${endTime - startTime}ms`);
   }
 }
 
